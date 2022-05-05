@@ -61,11 +61,11 @@ async function run() {
             res.send(result);
         })
 
-        // Update quantity and sold
+        // Update quantity and sold fruiteCollection
         app.put("/fruites/:id", async (req, res) => {
             const id = req.params.id
             const updateUser = req.body
-            console.log(updateUser);
+            console.log(id);
             const filter = { _id: ObjectId(id) }
             const options = { upsert: true };
             const updateDoc = {
@@ -78,7 +78,24 @@ async function run() {
             res.send(result)
         })
 
-        // Update quantity
+        // Update quantity and sold  myItemCollection
+        app.put("/myItem", async (req, res) => {
+            const email = req.query.email
+            const name = req.query.name
+            const updateUser = req.body
+            const filter = {email,name}
+            const options = { upsert: true };
+            const updateDoc = {
+                $set: {
+                    quantity: updateUser.quantity,
+                    sold: updateUser.sold
+                }
+            }
+            const result = await myItemCollection.updateOne(filter, updateDoc, options);
+            res.send(result)
+        })
+
+        // Update quantity fruiteCollection
         app.put("/fruites/:id", async (req, res) => {
             const id = req.params.id
             const updateUser = req.body
