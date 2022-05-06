@@ -47,6 +47,14 @@ async function run() {
             res.send(result);
         })
 
+        // get count
+        app.get("/fruiteCount",(req,res) => {
+            const query = {};
+            const cursor = fruiteCollection.find(query)
+            const result = await cursor.count()
+            res.send({count})
+        })
+
         // Insert single Item
         app.post("/fruites", async (req, res) => {
             const newItem = req.body
