@@ -24,8 +24,7 @@ async function run() {
 
         // get multiple fruites
         app.get("/fruites", async (req, res) => {
-            const pageSize = req.query;
-            console.log(pageSize);
+            console.log(req.query);
             const query = {}
             const cursor = fruiteCollection.find(query);
             const result = await cursor.toArray();
