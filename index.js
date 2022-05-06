@@ -48,7 +48,7 @@ async function run() {
         })
 
         // get count
-        app.get("/fruiteCount",(req,res) => {
+        app.get("/fruiteCount", async (req,res) => {
             const query = {};
             const cursor = fruiteCollection.find(query)
             const count = await cursor.count()
