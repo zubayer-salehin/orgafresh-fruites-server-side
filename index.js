@@ -28,12 +28,12 @@ async function run() {
             const size = parseInt(req.query.size);
             const query = {}
             const cursor = fruiteCollection.find(query);
-            let result;
-            if (page || size) {
-                result = await cursor.skip(page*size).limit(size).toArray();
-            }else{
-                result = await cursor.toArray();
-            }
+            let result = await cursor.skip(page*size).limit(size).toArray()
+            // if (page || size) {
+            //     result = await cursor.skip(page*size).limit(size).toArray();
+            // }else{
+            //     result = await cursor.toArray();
+            // }
             res.send(result);
         })
 
