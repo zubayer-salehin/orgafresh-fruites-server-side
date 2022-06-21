@@ -22,7 +22,7 @@ async function run() {
         const fruiteCollection = client.db("orgafresh-fruites").collection("fruites");
         const myItemCollection = client.db("add-item").collection("myItem");
 
-        // get multiple fruites
+        // get multiple fruites zubayer
         app.get("/fruites", async (req, res) => {
             const page = parseInt(req.query.page);
             const size = parseInt(req.query.size);
