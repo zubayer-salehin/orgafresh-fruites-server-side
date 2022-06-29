@@ -49,7 +49,7 @@ async function run() {
             res.send(result);
         })
 
-        // get count
+        // get total fruite count
         app.get("/fruiteCount", async (req,res) => {
             const count = await fruiteCollection.estimatedDocumentCount()
             res.send({count})
