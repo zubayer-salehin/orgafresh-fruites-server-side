@@ -9,7 +9,7 @@ app.use(cors())
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.send('Welcome Orgafresh Fruites Server side')
+    res.send('Welcome to Orgafresh Fruites Server side')
 })
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.mwitl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
