@@ -91,6 +91,10 @@ async function run() {
             const name = req.query.name
             const updateUser = req.body
             const filter = {email,name}
+            const exists = myItemCollection.find(filter);
+            if (!exists) {
+                return;
+            }
             const options = { upsert: true };
             const updateDoc = {
                 $set: {
