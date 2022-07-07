@@ -91,18 +91,13 @@ async function run() {
             const name = req.query.name
             const updateUser = req.body
             const filter = {email,name}
-            const exists = myItemCollection.find(filter);
-            if (!exists) {
-                return;
-            }
-            const options = { upsert: true };
             const updateDoc = {
                 $set: {
                     quantity: updateUser.quantity,
                     sold: updateUser.sold
                 }
             }
-            const result = await myItemCollection.updateOne(filter, updateDoc, options);
+            const result = await myItemCollection.updateOne(filter, updateDoc);
             res.send(result)
         })
 
