@@ -20,7 +20,7 @@ async function run() {
     try {
         await client.connect();
         const fruiteCollection = client.db("orgafresh-fruites").collection("fruites");
-        const myItemCollection = client.db("add-item").collection("myItem");
+        const myItemCollection = client.db("orgafresh-fruites").collection("myItem");
 
         // get multiple fruites
         app.get("/fruites", async (req, res) => {
@@ -73,7 +73,6 @@ async function run() {
         app.put("/fruites/:id", async (req, res) => {
             const id = req.params.id
             const updateUser = req.body
-            console.log(id);
             const filter = { _id: ObjectId(id) }
             const options = { upsert: true };
             const updateDoc = {
@@ -107,7 +106,6 @@ async function run() {
         app.put("/fruites/:id", async (req, res) => {
             const id = req.params.id
             const updateUser = req.body
-            console.log(updateUser);
             const filter = { _id: ObjectId(id) }
             const options = { upsert: true };
             const updateDoc = {
