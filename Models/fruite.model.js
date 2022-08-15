@@ -30,12 +30,10 @@ const fruiteSchema = new mongoose.Schema({
         required: true
     },
     userName: {
-        type: String,
-        required: true
+        type: String
     },
     email: {
-        type: String,
-        required: true
+        type: String
     }
 })
 
