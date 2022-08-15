@@ -1,12 +1,7 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const router = express.Router();
-
-const myItemSchema = require("../Schemas/myItemSchema");
-const myItemModel = mongoose.model("MyItem", myItemSchema);
+const myItemModel = require("../Models/myItem.model");
 
 
-router.get("/myItem", (req, res) => {
+exports.getAllMyItem = (req, res) => {
     myItemModel.find((err, data) => {
         if (err) {
             res.send(err);
@@ -14,10 +9,9 @@ router.get("/myItem", (req, res) => {
             res.send(data);
         }
     })
-})
+}
 
-
-router.post("/myItem", (req, res) => {
+exports.addMyItem = (req, res) => {
     const newFruite = new myItemModel(req.body);
     newFruite.save((err, data) => {
         if (err) {
@@ -26,10 +20,9 @@ router.post("/myItem", (req, res) => {
             res.send({ message: "New user Added" })
         }
     });
-})
+}
 
-
-router.put("/myItem", (req, res) => {
+exports.updateMyItem = (req, res) => {
     const email = req.query.email;
     const name = req.query.name;
     const fruiteUpdate = req.body;
@@ -40,10 +33,9 @@ router.put("/myItem", (req, res) => {
             res.send(docs)
         }
     });
-})
+}
 
-
-router.delete("/myItem/:id", (req, res) => {
+exports.deleteMyItemById = (req, res) => {
     const fruiteId = req.params.id;
     myItemModel.deleteOne({ _id: fruiteId }, (err, data) => {
         if (err) {
@@ -52,10 +44,9 @@ router.delete("/myItem/:id", (req, res) => {
             res.send(data)
         }
     });
-})
+}
 
-
-router.delete("/myItem", (req, res) => {
+exports.deleteMyItemByUsernameEmail = (req, res) => {
     const email = req.query.email;
     const name = req.query.name;
     myItemModel.deleteOne({ name, email }, (err, data) => {
@@ -65,6 +56,4 @@ router.delete("/myItem", (req, res) => {
             res.send(data)
         }
     });
-})
-
-module.exports = router;
+}

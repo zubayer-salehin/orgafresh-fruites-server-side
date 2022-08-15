@@ -4,8 +4,8 @@ require('dotenv').config()
 const cors = require("cors")
 const port = process.env.PORT || 5000
 const mongoose = require("mongoose");
-const fruiteRouter = require("./Routers/fruiteRouter");
-const myItemRouter = require("./Routers/myItemRouter");
+const fruiteRoute = require("./Routes/fruite.route");
+const myItemRoute = require("./Routes/myItem.route");
 
 app.use(cors())
 app.use(express.json())
@@ -24,8 +24,8 @@ mongoose.connect(mongodbURL)
     });
 
 
-app.use(fruiteRouter);
-app.use(myItemRouter)
+app.use(fruiteRoute);
+app.use(myItemRoute);
 
 
 app.listen(port, () => {

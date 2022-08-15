@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const fruiteSchema = new mongoose.Schema({
+const myItemSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -39,4 +39,6 @@ const fruiteSchema = new mongoose.Schema({
     }
 })
 
-module.exports = fruiteSchema;
+const myItemModel = mongoose.model("MyItem", myItemSchema);
+
+module.exports = myItemModel;
